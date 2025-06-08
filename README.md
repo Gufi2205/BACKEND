@@ -111,8 +111,4 @@ package.json
 
 ---
 
-## Autor
 
-- Gufi
-
----

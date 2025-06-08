@@ -113,6 +113,6 @@ package.json
 
 ## Autor
 
-- Julio (adaptar con tu nombre o equipo)
+- Gufi
 
 ---

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Producto</title>
+    <script>
+        if (!localStorage.getItem('token')) {
+            window.location.href = '/login.html';
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Crear Producto</h1>
+    <form id="productForm">
+        <input type="text" name="name" placeholder="Nombre" required><br>
+        <textarea name="description" placeholder="Descripción"></textarea><br>
+        <input type="number" name="quantity" placeholder="Cantidad" required><br>
+        <select name="status">
+            <option value="Disponible">Disponible</option>
+            <option value="No hay Stock">No hay Stock</option>
+        </select><br>
+        <button type="submit">Crear</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        document.getElementById('productForm').onsubmit = async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = {
+                name: form.name.value,
+                description: form.description.value,
+                quantity: form.quantity.value,
+                status: form.status.value
+            };
+            const res = await fetch('/products/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+        };
+    </script>
+</body>
+
+</html>

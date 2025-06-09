@@ -11,6 +11,7 @@
         <input type="password" name="password" placeholder="Contraseña" required><br>
         <button type="submit">Ingresar</button>
     </form>
+    <button id="goRegister">¿No tienes cuenta? Regístrate</button>
     <div id="result"></div>
     <script>
         document.getElementById('loginForm').onsubmit = async function(e) {
@@ -32,6 +33,11 @@
             } else {
                 document.getElementById('result').innerText = JSON.stringify(result, null, 2);
             }
+        };
+
+        // Redirigir a registro
+        document.getElementById('goRegister').onclick = function() {
+            window.location.href = '/register.html';
         };
     </script>
 </body>

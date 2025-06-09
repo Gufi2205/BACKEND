@@ -12,6 +12,7 @@
         <input type="email" name="email" placeholder="Correo" required><br>
         <button type="submit">Registrar</button>
     </form>
+    <button id="goLogin">¿Ya tienes cuenta? Inicia sesión</button>
     <div id="result"></div>
     <script>
         document.getElementById('registerForm').onsubmit = async function(e) {
@@ -29,6 +30,16 @@
             });
             const result = await res.json();
             document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+            if (res.ok) {
+                setTimeout(() => {
+                    window.location.href = '/login.html';
+                }, 1500); // Espera 1.5 segundos antes de redirigir
+            }
+        };
+
+        // Redirigir a login
+        document.getElementById('goLogin').onclick = function() {
+            window.location.href = '/login.html';
         };
     </script>
 </body>
